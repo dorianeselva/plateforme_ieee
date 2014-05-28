@@ -5,7 +5,6 @@ import com.example.plateformevaadin6.MysqlConnection;
 import com.vaadin.terminal.ThemeResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Embedded;
 import com.vaadin.ui.HorizontalLayout;
@@ -14,6 +13,7 @@ import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
 import com.vaadin.ui.VerticalLayout;
 
+@SuppressWarnings("serial")
 public class Generalchair extends CustomComponent implements TabSheet.SelectedTabChangeListener {	
 	public Button quit = new Button("Quitter", this, "quit");
 	public VerticalLayout vl = new VerticalLayout();

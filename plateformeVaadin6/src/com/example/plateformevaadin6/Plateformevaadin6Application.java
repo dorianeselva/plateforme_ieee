@@ -2,7 +2,7 @@ package com.example.plateformevaadin6;
 
 
 import generalchair.Generalchair;
-import inscription.Inscription;
+
 import inscription.PersonInfoInscri;
 
 import java.sql.ResultSet;
@@ -20,6 +20,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
+@SuppressWarnings("serial")
 public class Plateformevaadin6Application extends Application {
 
 	public Window mainWindow;

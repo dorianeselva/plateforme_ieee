@@ -1,14 +1,13 @@
 package com.example.plateformevaadin6;
 
 import com.vaadin.terminal.ThemeResource;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Embedded;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Link;
-import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
+@SuppressWarnings("serial")
 public class Footer extends CustomComponent {
 	// we create all the components and objects
 	private VerticalLayout layoutLines;
@@ -16,12 +15,12 @@ public class Footer extends CustomComponent {
 	// Show the image in the application 
 	
 
-	private Link linkTuto = new Link("Tutorials",
+/*	private Link linkTuto = new Link("Tutorials",
 	        new com.vaadin.terminal.ExternalResource("http://vaadin.com/"));
 		
 	private Link linkTools = new Link("ToolBox ",
 	        new com.vaadin.terminal.ExternalResource("http://vaadin.com/"));
-		
+*/		
 	private Link linkHome = new Link("IEEE Home ",
 	        new com.vaadin.terminal.ExternalResource("http://www.ieee.org/index.html"));
 		

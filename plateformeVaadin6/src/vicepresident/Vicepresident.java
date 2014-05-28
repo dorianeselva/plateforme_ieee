@@ -9,6 +9,7 @@ import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
 
+@SuppressWarnings("serial")
 public class Vicepresident extends CustomComponent implements TabSheet.SelectedTabChangeListener {	
 	public Button quit = new Button("Quitter", this, "quit");
 	public VerticalLayout vl = new VerticalLayout();

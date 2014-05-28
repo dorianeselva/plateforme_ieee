@@ -7,6 +7,7 @@ import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
+@SuppressWarnings("serial")
 public class Userapply extends CustomComponent {
 	private MysqlConnection con;
 	public VerticalLayout vl = new VerticalLayout();

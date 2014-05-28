@@ -10,6 +10,7 @@ import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
 
+@SuppressWarnings("serial")
 public class Inscription extends CustomComponent implements TabSheet.SelectedTabChangeListener {	
 	public Button quit = new Button("Quitter", this, "quit");
 	public VerticalLayout vl = new VerticalLayout();
@@ -57,6 +58,7 @@ public class Inscription extends CustomComponent implements TabSheet.SelectedTab
 		return panel;
 	}
 
+	@SuppressWarnings("unused")
 	private Panel workInfoInscri() {
 		Panel panel = new Panel();
 		panel.setHeight("550px");
@@ -69,6 +71,7 @@ public class Inscription extends CustomComponent implements TabSheet.SelectedTab
 		return panel;
 	}
 	
+	@SuppressWarnings("unused")
 	private Panel historyData(){
 		Panel panel = new Panel();
 		panel.setHeight("550px");

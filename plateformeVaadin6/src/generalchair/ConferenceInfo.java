@@ -15,13 +15,12 @@ import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
-import com.vaadin.ui.Button.ClickEvent;
 
+@SuppressWarnings("serial")
 public class ConferenceInfo extends CustomComponent {
 	private MysqlConnection con;
 	//public Button quit = new Button("Quitter", this, "quit");
@@ -64,7 +63,6 @@ public class ConferenceInfo extends CustomComponent {
 		
 	}
 	
-	@SuppressWarnings("serial")
 	private HorizontalSplitPanel ShowConference(int modelFR, int id_conf){
 
         hsplit = new HorizontalSplitPanel();
@@ -238,6 +236,7 @@ public class ConferenceInfo extends CustomComponent {
 		return hsplit;
 	}
 
+	@SuppressWarnings("unused")
 	private static Embedded getBlackNode() {
 		// A theme resource in the current theme ("book-examples")
 		// Located in: VAADIN/themes/book-examples/img/themeimage.png
@@ -362,12 +361,14 @@ public class ConferenceInfo extends CustomComponent {
 	public VerticalLayout showconference(){
 		
 		vl = new VerticalLayout();
+		Button addconf = new Button("New conference", this, "quit");
 		lefttest1 = new Label("CONFERENCE ONE");
 		lefttest2 = new Label("CONFERENCE TWO");
 		lefttest3 = new Label("CONFERENCE THREE");
 		vl.addComponent(lefttest1);
 		vl.addComponent(lefttest2);
 		vl.addComponent(lefttest3);
+		vl.addComponent(addconf);
 		vl.setComponentAlignment(lefttest1,Alignment.MIDDLE_CENTER);
 		
 		vl.addStyleName("styleConference");
@@ -375,7 +376,9 @@ public class ConferenceInfo extends CustomComponent {
 		
 		return vl;
 	}
-	
+	public void quit() {
+		getApplication().close();
+	}
 	public int getModelFR(int id_conf) throws Exception{
         con = new MysqlConnection();
         ResultSet rs = con.queryTable("select modelFR from conference where id_conference = " + id_conf);

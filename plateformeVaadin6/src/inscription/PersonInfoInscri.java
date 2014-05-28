@@ -43,7 +43,7 @@ public class PersonInfoInscri extends CustomComponent {
 		lastname = new TextField("Last name");
 		firstname = new TextField("First name");
 		sex = new ComboBox("Gender");
-		nationality = new ComboBox("Nationality");
+		nationality = new ComboBox("Country");
 		tel = new TextField("Telephone");
 		email = new TextField("Email");
 		pwd = new PasswordField("Password");

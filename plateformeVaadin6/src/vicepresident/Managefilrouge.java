@@ -4,6 +4,7 @@ import com.example.plateformevaadin6.MysqlConnection;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.VerticalLayout;
 
+@SuppressWarnings("serial")
 public class Managefilrouge extends CustomComponent {
 	private MysqlConnection con;
 	public VerticalLayout vl = new VerticalLayout();
