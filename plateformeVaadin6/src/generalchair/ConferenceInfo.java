@@ -361,24 +361,25 @@ public class ConferenceInfo extends CustomComponent {
 	public VerticalLayout showconference(){
 		
 		vl = new VerticalLayout();
-		Button addconf = new Button("New conference", this, "quit");
+		Button newconf = new Button("New conference", this, "newconf");
 		lefttest1 = new Label("CONFERENCE ONE");
 		lefttest2 = new Label("CONFERENCE TWO");
 		lefttest3 = new Label("CONFERENCE THREE");
 		vl.addComponent(lefttest1);
 		vl.addComponent(lefttest2);
 		vl.addComponent(lefttest3);
-		vl.addComponent(addconf);
+		vl.addComponent(newconf);
 		vl.setComponentAlignment(lefttest1,Alignment.MIDDLE_CENTER);
 		
 		vl.addStyleName("styleConference");
 		
-		
 		return vl;
 	}
-	public void quit() {
-		getApplication().close();
+	
+	public void newconf() {
+		
 	}
+	
 	public int getModelFR(int id_conf) throws Exception{
         con = new MysqlConnection();
         ResultSet rs = con.queryTable("select modelFR from conference where id_conference = " + id_conf);
