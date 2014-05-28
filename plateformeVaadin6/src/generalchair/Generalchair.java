@@ -5,6 +5,7 @@ import com.example.plateformevaadin6.MysqlConnection;
 import com.vaadin.terminal.ThemeResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Embedded;
 import com.vaadin.ui.HorizontalLayout;
@@ -18,6 +19,8 @@ public class Generalchair extends CustomComponent implements TabSheet.SelectedTa
 	public VerticalLayout vl = new VerticalLayout();
 	private MysqlConnection con;
 	public Panel personInfo;
+	public Panel tuto;
+	public Panel toolbox;
 	public Panel conferenceInfo;
 	public Panel filrougeInfo;
 	public Panel taskInfo;
@@ -47,9 +50,13 @@ public class Generalchair extends CustomComponent implements TabSheet.SelectedTa
 		
 		tabsheet.addListener(this);
 		personInfo = personInfo();
+		tuto = Tutorials.Tutorials();
+		toolbox = ToolBox.ToolBox();
 		conferenceInfo = conferenceInfo();
-		tabsheet.addTab(conferenceInfo, "My conference", null); 
-		tabsheet.addTab(personInfo, "My information", null);
+		tabsheet.addTab(conferenceInfo, "My Conferences", null); 
+		tabsheet.addTab(personInfo, "My Profil", null);
+		tabsheet.addTab(tuto, "Tutorials", null);
+		tabsheet.addTab(toolbox, "ToolBox", null);
         
         hl.addComponent(tabsheet);
         quit.addStyleName("quitButton");

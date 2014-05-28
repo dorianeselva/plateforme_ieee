@@ -33,11 +33,11 @@ public class PersonInfo extends CustomComponent {
 	private VerticalLayout Information(){
 		
 		vl = new VerticalLayout();
-		username = new Label("username: gpvert");
-		lastname = new Label("lasename: Impeccable");
-		firstname = new Label("first: Maud");
-		tel = new Label("tel: 0141556957");
-		email = new Label("email: mimpeccable@isep.fr");
+		username = new Label("username: GCtest");
+		lastname = new Label("last name: DOE");
+		firstname = new Label("first name: Jon");
+		tel = new Label("phone number: +33141556957");
+		email = new Label("email: jdoe@isep.fr");
 		address = new Label("address: 1 avenue des champs élysées 75008 Paris");
 		//modif = new Button("modify");
 		

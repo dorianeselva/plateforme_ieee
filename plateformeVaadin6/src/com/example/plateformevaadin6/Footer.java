@@ -69,8 +69,8 @@ public class Footer extends CustomComponent {
 		layoutFooter.addComponent(imageLogo);
 		secondLines.setSpacing(true);	
 		secondLines.addComponent(whiteSpaceBis);
-		secondLines.addComponent(linkTuto);
-		secondLines.addComponent(linkTools);
+	//	secondLines.addComponent(linkTuto);
+	//  secondLines.addComponent(linkTools);
 		secondLines.addComponent(linkHome);
 		secondLines.addComponent(linkMap);
 		secondLines.addComponent(linkContact);
@@ -78,8 +78,8 @@ public class Footer extends CustomComponent {
 		secondLines.addComponent(linkPrivacy);
 		secondLines.addComponent(linkPolicy);
 		
-		linkTuto.setTargetName("_blank");
-		linkTools.setTargetName("_blank");
+	//	linkTuto.setTargetName("_blank");
+	//	linkTools.setTargetName("_blank");
 		linkHome.setTargetName("_blank");
 		linkMap.setTargetName("_blank");
 		linkContact.setTargetName("_blank");
