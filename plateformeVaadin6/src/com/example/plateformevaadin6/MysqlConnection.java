@@ -2,7 +2,7 @@ package com.example.plateformevaadin6;
 import java.sql.*;
 
 public class MysqlConnection {
-//
+
 	Connection conn;
 
 	public MysqlConnection() throws Exception {
