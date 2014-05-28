@@ -1,0 +1,183 @@
+
+@import "../reindeer/styles.css";
+
+
+
+.v-datefield-popup-timefield .v-datefield-calendarpanel-header {
+	display:none;
+}
+
+.v-datefield-popup-timefield .v-datefield-calendarpanel-weekdays {
+	display:none;
+}
+
+.v-datefield-popup-timefield .v-datefield-calendarpanel-body {
+	display:none;
+}
+
+.v-datefield-popup-timefield .v-select {
+	width: 60px;
+}
+
+.v-datefield-popup-timefield .v-label {
+	width: 20px;
+}
+
+.quitButton {
+	position: absolute;
+	top: 21px;
+	left: 1140px;
+}
+
+.noteredcount{
+	background-color:red;
+	border:transparent;
+	width:40px;
+	height:40px;
+	border-radius:15px;
+	margin-right:150px;
+}
+
+.noteorangecount{
+	background-color:orange;
+	border:transparent;
+	width:40px;
+	height:40px;
+	border-radius:15px;
+	margin-right:150px;
+}
+
+.notegreencount{
+	background-color:green;
+	border:transparent;
+	width:40px;
+	height:40px;
+	border-radius:15px;
+	margin-right:150px;
+}
+
+.note1{
+	background-color:red;
+	color:red;
+}
+.note2{
+	background-color:red;
+}
+.note3{
+	background-color:red;
+}
+.note4{
+	background-color:red;
+}
+.note5{
+	background-color:red;
+}
+.note6{
+	background-color:red;
+}
+.note7{
+	background-color:red;
+}
+.note8{
+	background-color:red;
+}
+.note9{
+	background-color:red;
+}
+.note10{
+	background-color:red;
+}
+.note11{
+	background-color:red;
+}
+.note12{
+	background-color:red;
+}
+.note13{
+	background-color:red;
+}
+.note14{
+	background-color:red;
+}
+.note15{
+	background-color:red;
+}
+.note16{
+	background-color:red;
+}
+.note17{
+	background-color:red;
+}
+.note18{
+	background-color:red;
+}
+.note19{
+	background-color:red;
+}
+.note20{
+	background-color:red;
+}
+.note21{
+	background-color:red;
+}
+
+.line1{
+	background-color:red;
+}
+.line2{
+	background-color:red;
+}
+.line3{
+	background-color:red;
+}
+.line4{
+	background-color:red;
+}
+.line5{
+	background-color:red;
+}
+.line6{
+	background-color:red;
+}
+.line7{
+	background-color:red;
+}
+.line8{
+	background-color:red;
+}
+.line9{
+	background-color:red;
+}
+.line10{
+	background-color:red;
+}
+.line11{
+	background-color:red;
+}
+.line12{
+	background-color:red;
+}
+.line13{
+	background-color:red;
+}
+.line14{
+	background-color:red;
+}
+.line15{
+	background-color:red;
+}
+.line16{
+	background-color:red;
+}
+.line17{
+	background-color:red;
+}
+.line18{
+	background-color:red;
+}
+.line19{
+	background-color:red;
+}
+.line20{
+	background-color:red;
+}
