@@ -1,11 +1,11 @@
 package com.example.plateformevaadin6;
 
-//essai2
 import generalchair.Generalchair;
-
 import inscription.PersonInfoInscri;
 
 import java.sql.ResultSet;
+
+import vicepresident.Vicepresident;
 
 import com.vaadin.Application;
 import com.vaadin.terminal.ThemeResource;
@@ -126,12 +126,17 @@ public class Plateformevaadin6Application extends Application {
 				con = new MysqlConnection();
 
     			ResultSet rs = con
-    					.queryTable("SELECT id_user FROM user WHERE username = '"
+    					.queryTable("SELECT id_user,role FROM user WHERE username = '"
     							+ name + "' AND password = '" + password + "'");
     			rs.next();
     			int id_user = rs.getInt("id_user");
-    			System.out.println(id_user);
-    			getMainWindow().setContent(new Generalchair());
+    			String role = rs.getString("role");
+    			System.out.println(id_user + role);
+    			if(role.equals("GC")){
+    			getMainWindow().setContent(new Generalchair(id_user));
+    			}else if(role.equals("VP")){
+    			//getMainWindow().setContent(new Vicepresident(id_user));	
+    			}
 			} catch (Exception e) {
 				//e.printStackTrace();
 				getMainWindow().showNotification("Incorrect username or password!");
