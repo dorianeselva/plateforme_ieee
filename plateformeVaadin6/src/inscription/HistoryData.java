@@ -6,59 +6,68 @@ import com.example.plateformevaadin6.MysqlConnection;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.DateField;
+import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.Upload;
 import com.vaadin.ui.VerticalLayout;
 
+@SuppressWarnings("serial")
 public class HistoryData extends CustomComponent {
 	private MysqlConnection con;
-	public VerticalLayout vl = new VerticalLayout();
-	//public Button quit = new Button("Quitter", this, "quit");
-	public TextField HD;
+	private TextField myTxtField;
+	private TextArea myTxtArea;
+	private DateField myDateField;
+	private Upload myUpload;
 	
+	public VerticalLayout vl = new VerticalLayout();
+
 	public HistoryData() {
 		HD();
 		setCompositionRoot(vl);
-		//vl.setSizeFull();
 		vl.setSpacing(true);
 		vl.setMargin(true);
 
 	}
-	
-	public VerticalLayout HD(){
+
+	public VerticalLayout HD() {
 		vl = new VerticalLayout();
 		vl.setSizeFull();
-		
-		
-		
-		MysqlConnection con;
-		//ResultSet count = con.queryTable("SELECT count(id_input) FROM `HD`");
-		//while(count.next()){
-			
-		//}
-		
+
 		try {
+			MysqlConnection con;
 			con = new MysqlConnection();
-			
-			ResultSet rs = con.queryTable("SELECT label FROM HD");
-			
-			while (rs.next()){
-				String nameHD = rs.getString(1);
-			    System.out.println(nameHD);
-			    HD = new TextField(nameHD);
-        	vl.addComponent(HD);
-        	vl.setComponentAlignment(HD, Alignment.MIDDLE_CENTER);
-			
+
+			ResultSet rs = con.queryTable("SELECT * FROM HD order by orderHD");
+
+			while (rs.next()) {
+				String nameHD = rs.getString("label");
+				int fieldtype = rs.getInt("id_input");
+				switch(fieldtype){
+				case 1: myTxtField= new TextField(nameHD);
+						vl.addComponent(myTxtField);
+						vl.setComponentAlignment(myTxtField, Alignment.MIDDLE_CENTER);
+				case 2: myTxtArea=new TextArea(nameHD);
+						vl.addComponent(myTxtArea);
+						vl.setComponentAlignment(myTxtArea, Alignment.MIDDLE_CENTER);
+				case 3: myDateField=new DateField();
+						myDateField.setDateFormat("yyyy-MM-dd");
+						vl.addComponent(myDateField);
+						vl.setComponentAlignment(myDateField, Alignment.MIDDLE_CENTER);
+				case 4: myUpload = new Upload();
+						vl.addComponent(myUpload);
+						vl.setComponentAlignment(myUpload, Alignment.MIDDLE_CENTER);
+				}
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			//Window.alert("Identifiant ou Mot de passe pas correct");
+			getWindow().showNotification("Database error");
 		}
-		
+
 		Button submit = new Button("Submit");
 		vl.addComponent(submit);
 		vl.setComponentAlignment(submit, Alignment.MIDDLE_CENTER);
 		return vl;
 	}
 }
-
