@@ -378,6 +378,8 @@ public class ConferenceInfo extends CustomComponent {
 	
 	public void newconf() {
 		
+		// modifier qqch
+		
 	}
 	
 	public int getModelFR(int id_conf) throws Exception{
