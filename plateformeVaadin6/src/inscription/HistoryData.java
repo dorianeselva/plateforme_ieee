@@ -23,7 +23,7 @@ public class HistoryData extends CustomComponent {
 		vl.setMargin(true);
 
 	}
-	//
+	
 	public VerticalLayout HD(){
 		vl = new VerticalLayout();
 		vl.setSizeFull();
