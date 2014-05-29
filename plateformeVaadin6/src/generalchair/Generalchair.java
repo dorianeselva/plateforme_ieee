@@ -12,7 +12,7 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TabSheet.SelectedTabChangeEvent;
 import com.vaadin.ui.VerticalLayout;
-
+//hello
 @SuppressWarnings("serial")
 public class Generalchair extends CustomComponent implements TabSheet.SelectedTabChangeListener {	
 	public Button quit = new Button("Quitter", this, "quit");
