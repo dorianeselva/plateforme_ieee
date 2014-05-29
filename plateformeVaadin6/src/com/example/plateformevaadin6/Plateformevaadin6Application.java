@@ -37,12 +37,16 @@ public class Plateformevaadin6Application extends Application {
 		setTheme("mytheme");
 		
 		mainWindow.setContent(bigLayout);
-		
+		HorizontalLayout emptySpace = new HorizontalLayout();
+	//	emptySpace.setWidth("100px");
+	//	layout.addComponent(emptySpace);
+		//mainWindow.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
 		layout.addComponent(panel);
 		layout.addComponent(panel2);
-		layout.setSizeFull();
-		layout.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
-		layout.setComponentAlignment(panel2, Alignment.MIDDLE_CENTER);
+		//layout.setSizeFull();
+		layout.setWidth("100%");
+		layout.setComponentAlignment(panel, Alignment.TOP_RIGHT);
+		layout.setComponentAlignment(panel2, Alignment.TOP_LEFT);
 		panel.setWidth("300px");
 		panel.setHeight("300px");
 		panel2.setWidth("300px");

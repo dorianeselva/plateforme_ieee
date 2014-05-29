@@ -8,10 +8,13 @@ import com.vaadin.ui.VerticalLayout;
 public class Tutorials extends CustomComponent {
 	private static Link tuto1 = new Link("Tutorial for Task 1",
 			new com.vaadin.terminal.ExternalResource("http://google.com/"));
+	
 	private static Link tuto2 = new Link("Tutorial for Task 2",
 			new com.vaadin.terminal.ExternalResource("http://vaadin.com/"));
 
 	public static Panel Tutorials() {
+		tuto1.setTargetName("_blank");
+		tuto2.setTargetName("_blank");
 		VerticalLayout vl = new VerticalLayout();
 		Panel p = new Panel();
 		p.setHeight("550px");
