@@ -377,7 +377,7 @@ public class ConferenceInfo extends CustomComponent {
 		
 		return vl;
 	}
-	//essai
+	
 	public void newconf() {
 		Inscription.historyData();		
 	}
