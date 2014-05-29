@@ -19,7 +19,7 @@ public class HistoryData extends CustomComponent {
 	private TextArea myTxtArea;
 	private DateField myDateField;
 	private Upload myUpload;
-	
+
 	public VerticalLayout vl = new VerticalLayout();
 
 	public HistoryData() {
@@ -41,22 +41,29 @@ public class HistoryData extends CustomComponent {
 			ResultSet rs = con.queryTable("SELECT * FROM HD order by orderHD");
 
 			while (rs.next()) {
-				String nameHD = rs.getString("label");
-				int fieldtype = rs.getInt("id_input");
+				String nameHD = null; 
+				int fieldtype = 0;
+				nameHD = rs.getString("label");
+				fieldtype = rs.getInt("id_input");
+				
 				switch(fieldtype){
 				case 1: myTxtField= new TextField(nameHD);
 						vl.addComponent(myTxtField);
-						vl.setComponentAlignment(myTxtField, Alignment.MIDDLE_CENTER);
+						vl.setComponentAlignment(myTxtField, Alignment.BOTTOM_LEFT);
+						break;
 				case 2: myTxtArea=new TextArea(nameHD);
 						vl.addComponent(myTxtArea);
-						vl.setComponentAlignment(myTxtArea, Alignment.MIDDLE_CENTER);
-				case 3: myDateField=new DateField();
+						vl.setComponentAlignment(myTxtArea, Alignment.BOTTOM_LEFT);
+						break;
+				case 3: myDateField=new DateField(nameHD);
 						myDateField.setDateFormat("yyyy-MM-dd");
 						vl.addComponent(myDateField);
-						vl.setComponentAlignment(myDateField, Alignment.MIDDLE_CENTER);
-				case 4: myUpload = new Upload();
+						vl.setComponentAlignment(myDateField, Alignment.BOTTOM_LEFT);
+						break;
+				case 4: myUpload = new Upload(nameHD, null);
 						vl.addComponent(myUpload);
-						vl.setComponentAlignment(myUpload, Alignment.MIDDLE_CENTER);
+						vl.setComponentAlignment(myUpload, Alignment.BOTTOM_LEFT);
+						break;
 				}
 			}
 
