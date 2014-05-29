@@ -44,7 +44,7 @@ public class Generalchair extends CustomComponent implements TabSheet.SelectedTa
 		ThemeResource resourceHeader = new ThemeResource("img/headerVert.jpg");
 		Embedded imageHeader = new Embedded(null, resourceHeader) ;
 		imageHeader.setWidth("1000px");
-		imageHeader.setHeight("100px");
+		imageHeader.setHeight("80px");
 		vl2.addComponent(imageHeader);
 		vl2.setComponentAlignment(imageHeader,Alignment.MIDDLE_CENTER);
 		
@@ -62,17 +62,28 @@ public class Generalchair extends CustomComponent implements TabSheet.SelectedTa
         quit.addStyleName("quitButton");
         hl.addComponent(quit);
         vl2.addComponent(hl);
+        vl2.setComponentAlignment(hl,Alignment.MIDDLE_CENTER);
+        
+        Panel footer_panel =  new Panel();
+        footer_panel.setWidth("1000px");
+        footer_panel.setHeight("105px");
+        footer_panel.setStyleName("footer");
         Footer foot = new Footer();
-        vl2.addComponent(foot);
+        footer_panel.addComponent(foot);
+        vl2.addComponent(footer_panel);
+        vl2.setComponentAlignment(footer_panel,Alignment.MIDDLE_CENTER);
+        
+        
+       
         vl2.setExpandRatio(hl, 4);
-        vl2.setExpandRatio(foot, 1);
+        vl2.setExpandRatio(footer_panel, 1);
 		return vl2;
 	}
 	
 	private Panel personInfo(int id_user) {
 		Panel panel = new Panel();
 		panel.setHeight("550px");
-		panel.setWidth("1280px");
+		panel.setWidth("1000px");
 		try {
 			panel.setContent(new PersonInfo(id_user));
 		} catch (Exception e) {
@@ -85,7 +96,7 @@ public class Generalchair extends CustomComponent implements TabSheet.SelectedTa
 	private Panel conferenceInfo(int id_user) {
 		Panel panel = new Panel();
 		panel.setHeight("550px");
-		panel.setWidth("1280px");
+		panel.setWidth("1000px");
 		try {
 			panel.setContent(new ConferenceInfo(id_user));
 		} catch (Exception e) {

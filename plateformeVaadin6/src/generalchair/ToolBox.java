@@ -18,7 +18,7 @@ public class ToolBox extends CustomComponent{
 		Panel p = new Panel();
 		p.addComponent(vl);
 		p.setHeight("550px");
-		p.setWidth("1280px");
+		p.setWidth("1000px");
 		return p;
 	}
 }

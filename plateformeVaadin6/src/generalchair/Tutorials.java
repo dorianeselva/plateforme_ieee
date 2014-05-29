@@ -15,7 +15,7 @@ public class Tutorials extends CustomComponent {
 		VerticalLayout vl = new VerticalLayout();
 		Panel p = new Panel();
 		p.setHeight("550px");
-		p.setWidth("1280px");
+		p.setWidth("1000px");
 
 		vl.addComponent(tuto1);
 		vl.addComponent(tuto1);
