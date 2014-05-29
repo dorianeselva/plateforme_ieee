@@ -72,7 +72,7 @@ public class Inscription extends CustomComponent implements TabSheet.SelectedTab
 	}
 	
 	@SuppressWarnings("unused")
-	private Panel historyData(){
+	public static Panel historyData(){
 		Panel panel = new Panel();
 		panel.setHeight("550px");
 		panel.setWidth("1280px");

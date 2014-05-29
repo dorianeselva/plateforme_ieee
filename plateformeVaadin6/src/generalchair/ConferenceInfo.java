@@ -1,6 +1,8 @@
 package generalchair;
 
 
+import inscription.Inscription;
+
 import java.sql.ResultSet;
 
 import com.example.plateformevaadin6.MysqlConnection;
@@ -377,9 +379,7 @@ public class ConferenceInfo extends CustomComponent {
 	}
 	
 	public void newconf() {
-		
-		// modifier qqch
-		
+		Inscription.historyData();		
 	}
 	
 	public int getModelFR(int id_conf) throws Exception{
