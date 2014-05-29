@@ -1,6 +1,6 @@
 package com.example.plateformevaadin6;
 
-//essai
+//essai2
 import generalchair.Generalchair;
 
 import inscription.PersonInfoInscri;
