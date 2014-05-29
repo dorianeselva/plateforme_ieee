@@ -6,7 +6,7 @@ import com.example.plateformevaadin6.MysqlConnection;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
-
+//;,jnh
 @SuppressWarnings("serial")
 public class Userapply extends CustomComponent {
 	private MysqlConnection con;
