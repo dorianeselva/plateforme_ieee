@@ -44,7 +44,7 @@ public class Generalchair extends CustomComponent implements TabSheet.SelectedTa
 		ThemeResource resourceHeader = new ThemeResource("img/headerVert.jpg");
 		Embedded imageHeader = new Embedded(null, resourceHeader) ;
 		imageHeader.setWidth("1000px");
-		imageHeader.setHeight("150px");
+		imageHeader.setHeight("100px");
 		vl2.addComponent(imageHeader);
 		vl2.setComponentAlignment(imageHeader,Alignment.MIDDLE_CENTER);
 		

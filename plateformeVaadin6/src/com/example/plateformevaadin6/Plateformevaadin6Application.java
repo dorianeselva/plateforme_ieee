@@ -77,7 +77,7 @@ public class Plateformevaadin6Application extends Application {
 		ThemeResource resourceHeader = new ThemeResource("img/headerVert.jpg");
 		Embedded imageHeader = new Embedded(null, resourceHeader) ;
 		imageHeader.setWidth("1000px");
-		imageHeader.setHeight("150px");
+		imageHeader.setHeight("100px");
 		
 		bigLayout.addComponent(imageHeader);
 		bigLayout.setComponentAlignment(imageHeader,Alignment.MIDDLE_CENTER);
