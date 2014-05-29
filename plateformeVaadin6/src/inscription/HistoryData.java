@@ -32,7 +32,6 @@ public class HistoryData extends CustomComponent {
 
 	public VerticalLayout HD() {
 		vl = new VerticalLayout();
-		vl.setSizeFull();
 
 		try {
 			MysqlConnection con;
@@ -41,40 +40,43 @@ public class HistoryData extends CustomComponent {
 			ResultSet rs = con.queryTable("SELECT * FROM HD order by orderHD");
 
 			while (rs.next()) {
-				String nameHD = null; 
+				String nameHD = null;
 				int fieldtype = 0;
 				nameHD = rs.getString("label");
 				fieldtype = rs.getInt("id_input");
-				
-				switch(fieldtype){
-				case 1: myTxtField= new TextField(nameHD);
-						vl.addComponent(myTxtField);
-						vl.setComponentAlignment(myTxtField, Alignment.BOTTOM_LEFT);
-						break;
-				case 2: myTxtArea=new TextArea(nameHD);
-						vl.addComponent(myTxtArea);
-						vl.setComponentAlignment(myTxtArea, Alignment.BOTTOM_LEFT);
-						break;
-				case 3: myDateField=new DateField(nameHD);
-						myDateField.setDateFormat("yyyy-MM-dd");
-						vl.addComponent(myDateField);
-						vl.setComponentAlignment(myDateField, Alignment.BOTTOM_LEFT);
-						break;
-				case 4: myUpload = new Upload(nameHD, null);
-						vl.addComponent(myUpload);
-						vl.setComponentAlignment(myUpload, Alignment.BOTTOM_LEFT);
-						break;
+
+				switch (fieldtype) {
+				case 1:
+					myTxtField = new TextField(nameHD);
+					vl.addComponent(myTxtField);
+					vl.setComponentAlignment(myTxtField, Alignment.BOTTOM_LEFT);
+					break;
+				case 2:
+					myTxtArea = new TextArea(nameHD);
+					vl.addComponent(myTxtArea);
+					vl.setComponentAlignment(myTxtArea, Alignment.BOTTOM_LEFT);
+					break;
+				case 3:
+					myDateField = new DateField(nameHD);
+					myDateField.setDateFormat("yyyy-MM-dd");
+					vl.addComponent(myDateField);
+					vl.setComponentAlignment(myDateField, Alignment.BOTTOM_LEFT);
+					break;
+				case 4:
+					myUpload = new Upload(nameHD, null);
+					vl.addComponent(myUpload);
+					vl.setComponentAlignment(myUpload, Alignment.BOTTOM_LEFT);
+					break;
 				}
 			}
-
+			Button submit = new Button("Submit");
+			vl.addComponent(submit);
+			vl.setComponentAlignment(submit, Alignment.BOTTOM_LEFT);
 		} catch (Exception e) {
 			e.printStackTrace();
 			getWindow().showNotification("Database error");
 		}
 
-		Button submit = new Button("Submit");
-		vl.addComponent(submit);
-		vl.setComponentAlignment(submit, Alignment.MIDDLE_CENTER);
 		return vl;
 	}
 }

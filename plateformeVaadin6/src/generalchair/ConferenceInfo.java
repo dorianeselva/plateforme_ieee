@@ -396,7 +396,9 @@ public class ConferenceInfo extends CustomComponent {
 	}
 	
 	public void newconf() {
-		Inscription.historyData();		
+		gl.removeAllComponents();
+		gl.addComponent(Inscription.historyData());
+		gl.setSizeFull();
 	}
 	
 	public int getModelFR(int id_conf) throws Exception{
