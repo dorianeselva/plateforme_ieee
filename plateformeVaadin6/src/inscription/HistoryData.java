@@ -14,7 +14,7 @@ import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
 public class HistoryData extends CustomComponent {
-	private MysqlConnection con;
+	//private MysqlConnection con;
 	private TextField myTxtField;
 	private TextArea myTxtArea;
 	private DateField myDateField;
@@ -37,7 +37,7 @@ public class HistoryData extends CustomComponent {
 			MysqlConnection con;
 			con = new MysqlConnection();
 
-			ResultSet rs = con.queryTable("SELECT * FROM HD order by orderHD");
+			ResultSet rs = con.queryTable("SELECT * FROM pre_hd order by orderpreHD");
 
 			while (rs.next()) {
 				String nameHD = null;

@@ -32,7 +32,7 @@ public class Conferenceapply extends CustomComponent {
 			MysqlConnection con;
 			con = new MysqlConnection();
 
-			ResultSet rs = con.queryTable("SELECT * FROM PRE_HD_CONF order by id_pre_conf");
+			ResultSet rs = con.queryTable("SELECT * FROM pre_hd_conf order by id_pre_conf");
 
 		vl = new VerticalLayout();
 	

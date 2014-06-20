@@ -6,10 +6,11 @@ import inscription.Inscription;
 import java.sql.ResultSet;
 
 import com.example.plateformevaadin6.MysqlConnection;
-import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.terminal.ThemeResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.Embedded;
@@ -30,7 +31,7 @@ public class ConferenceInfo extends CustomComponent {
 	private VerticalLayout vl;
 	private GridLayout gl;
 	private int num=21;
-	private Embedded[] note;
+	private Button[] note;
 	private Label[] line;
 	private Embedded noteredcount;
 	private int noterednumber=0;
@@ -44,7 +45,6 @@ public class ConferenceInfo extends CustomComponent {
 	private Window taskwindow;
 	private VerticalLayout vl2;
 	private int modelFR;
-//	private int node;
 	
 	public ConferenceInfo(int id_user) throws Exception {
 		showconference(id_user);
@@ -54,17 +54,14 @@ public class ConferenceInfo extends CustomComponent {
 	
 	
 	
-	public void ShowConference(){
-		int id_conf=1;
-		int id_user=5;
+	public void ShowConference(int id_user, int id_conf){
 		
 	try {
 		modelFR = getModelFR(id_conf);
 		num = getNbNotes(modelFR);
-		System.out.println(num + "nb notes get");
 
-		note= new Embedded[num];
-		line= new Label[num-1];
+		note= new Button[num+1];
+		line= new Label[num];
 		ShowConference_1(id_user,modelFR, id_conf);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -92,10 +89,11 @@ public class ConferenceInfo extends CustomComponent {
 		setHeight("100.0%");
 		
 
-		for(int i = 0; i<num; i++){
+		for(int i = 0; i<num+1; i++){
 			
 			//final int fi = i;
-			note[i] = ConferenceInfo.getRedNode();
+			//note[i] = ConferenceInfo.getRedNode();
+			note[i] = new Button(String.valueOf(i));
 			
 			//	note[i] = new Embedded("", new ThemeResource("images/search/details/personDetailsDresserIcons_history.png"));
 				note[i].setSizeUndefined();
@@ -103,17 +101,19 @@ public class ConferenceInfo extends CustomComponent {
 				note[i].addListener(new ClickListener()
 	            {
 	                
-	                public void click(com.vaadin.event.MouseEvents.ClickEvent event)
-	                {
+
+					public void buttonClick(ClickEvent event) {
+						// TODO Auto-generated method stub
+						String str = event.getButton().getCaption();
+	                	//System.out.println(str);
 	                    try {
-							showtask(1);
+							showtask(Integer.parseInt(str));
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 							System.out.println("out");
-						}
-	                    
-	                }
+						}	
+					}
 	            });
 				
 				note[i].addStyleName("note"+(i+1));
@@ -151,7 +151,7 @@ public class ConferenceInfo extends CustomComponent {
 			}
 		
 		
-		for(int j = 0; j<num-1; j++){
+		for(int j = 0; j<num; j++){
 			
 			line[j] = new Label();
 			line[j].addStyleName("line"+(j+1));
@@ -295,7 +295,6 @@ public class ConferenceInfo extends CustomComponent {
 		vl2 = new VerticalLayout();
 		
         HorizontalLayout hl;
-        Label lb;
         TextField tf;
         TextArea ta;
         DateField df;
@@ -314,36 +313,54 @@ public class ConferenceInfo extends CustomComponent {
             label = rs.getString("label");
             id_input = rs.getInt("id_input");
             rs1 = getTask_conf(id_task);
+            hl = new HorizontalLayout();
 
             if(rs1.next()){
                 value = rs1.getString("value");
                 valid = rs1.getInt("valid");
-                System.out.println(value+valid);
-                if(valid != 0 && value != null){
-                    lb = new Label(label + ": " + value);
-                    vl.addComponent(lb);
-                }else if(valid != 0 ){
-                    hl = new HorizontalLayout();
-                    lb = new Label(label);
-                    hl.addComponent(lb);
-                    if(id_input == 0){
-                    	
-                    }
-                    else if(id_input == 1){
-                        tf = new TextField();
+                
+                if(valid != 0  ){ 
+                	if(value != null){
+                    vl2.addComponent(new Label(label + " : " + value));
+                	}else{
+                	vl2.addComponent(new Label(label));	
+                	}
+                }else{
+                    
+                    hl.addComponent(new Label(label));
+                    if(id_input == 1){
+                        tf = new TextField(value);
                         hl.addComponent(tf);
                     }else if(id_input == 2){
-                        ta = new TextArea();
+                        ta = new TextArea(value);
                         hl.addComponent(ta);
                     }else if(id_input == 3){
-                        df = new DateField();
+                        df = new DateField(value);
                         hl.addComponent(df);
                     }else if(id_input == 4){
                         //upload
                     }
+                    hl.addComponent(new Button("valid"));
                     vl2.addComponent(hl);
                 }
-            }   
+            }else{
+            	hl.addComponent(new Label(label));
+                if(id_input == 1){
+                    tf = new TextField();
+                    hl.addComponent(tf);
+                }else if(id_input == 2){
+                    ta = new TextArea();
+                    hl.addComponent(ta);
+                }else if(id_input == 3){
+                    df = new DateField();
+                    hl.addComponent(df);
+                }else if(id_input == 4){
+                    //upload
+                }
+                hl.addComponent(new Button("valid"));
+                
+                vl2.addComponent(hl);
+            }
         }
 		
 		taskwindow.setContent(vl2);
@@ -362,23 +379,21 @@ public class ConferenceInfo extends CustomComponent {
 		Button id_conf_display;
 		final ResultSet rs = getPersonConfs(id_user);
 		while(rs.next()){
-			id_conf_display = new Button(String.valueOf(rs.getInt("id_conference")), this, "ShowConference" );
+			id_conf_display = new Button(String.valueOf(rs.getInt("id_conference")) );
 			
-			/*id_conf_display.addListener(new ClickListener()
-            {
-                
-                public void click(com.vaadin.event.MouseEvents.ClickEvent event)
-                {
-                    try {
-                    	ShowConference(id_user,modelFR, rs.getInt("id_conference"));
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						System.out.println("out");
+			id_conf_display.addListener(new ClickListener()
+	            {
+	        
+
+					public void buttonClick(ClickEvent event) {
+						// TODO Auto-generated method stub
+						String str = event.getButton().getCaption();
+	                	//System.out.println(str);
+	                	ShowConference(id_user,Integer.parseInt(str));
+	                	
 					}
-                    
-                }
-            }, null);*/
+	                    
+	                });
 			vl.addComponent(id_conf_display);
 		}
 		
@@ -396,9 +411,9 @@ public class ConferenceInfo extends CustomComponent {
 	}
 	
 	public void newconf() {
-		gl.removeAllComponents();
+		/*gl.removeAllComponents();
 		gl.addComponent(Inscription.historyData());
-		gl.setSizeFull();
+		gl.setSizeFull();*/
 	}
 	
 	public int getModelFR(int id_conf) throws Exception{
@@ -420,7 +435,6 @@ public class ConferenceInfo extends CustomComponent {
     public int getNbTasks(int modelFR, int note) throws Exception{
         con = new MysqlConnection();
         ResultSet rs = con.queryTable("select count(id_task) as num2 from fr where modelFR = " + modelFR + " and note = " + note);
-        System.out.println("select count(id_task) as num2 from fr where modelFR = " + modelFR + " and note = " + note);
         rs.next();
         return rs.getInt("num2");
       
@@ -432,9 +446,7 @@ public class ConferenceInfo extends CustomComponent {
         ResultSet rs = con.queryTable("select count(conf_fr.id_task) as num3 from conf_fr " 
                              + " join fr on fr.id_task = conf_fr.id_task where id_conference = " + id_conf + " and valid = 1 and note = " + note
         		);
-        System.out.println("select count(conf_fr.id_task) as num3 from conf_fr " 
-                                      + " join fr on fr.id_task = conf_fr.id_task where id_conference = " + id_conf + " and valid = 1 and note = " + note);
-        rs.next();                    
+         rs.next();                    
         return rs.getInt("num3");
                             
     }
@@ -445,8 +457,8 @@ public class ConferenceInfo extends CustomComponent {
         int Nbtasks_conf=0;
         int nbNotes = getNbNotes(modelFR);
         for(int i = 1; i<= nbNotes; i++){
-            Nbtasks = getNbTasks(modelFR, id_conf);System.out.println(Nbtasks+"Nbtasks");
-            Nbtasks_conf = getNbTasks_conf(id_conf, i);System.out.println(Nbtasks_conf+"Nbtasks_conf");
+            Nbtasks = getNbTasks(modelFR, id_conf);
+            Nbtasks_conf = getNbTasks_conf(id_conf, i);
             if(Nbtasks_conf == 0){
                 noterednumber++;
             }else if(Nbtasks_conf < Nbtasks ){
@@ -455,7 +467,6 @@ public class ConferenceInfo extends CustomComponent {
                 notegreennumber++;
             }
         }
-    System.out.println(nbNotes+"nbNotes");
     
     
     }
@@ -465,15 +476,13 @@ public class ConferenceInfo extends CustomComponent {
         con = new MysqlConnection();
         ResultSet rs = con.queryTable("select id_task, label, id_input from fr where modelFR = " 
                                + modelFR + " and note =" + note + " order by orderTask");
-        System.out.println("select id_task, label, id_input from fr where modelFR = " 
-                + modelFR + " and note =" + note + " order by orderTask");
+        
        return rs;
     } 
 
     public ResultSet getTask_conf(int id_task) throws Exception{
         con = new MysqlConnection();
         ResultSet rs = con.queryTable("select value, valid from conf_fr where id_task = " + id_task);
-        System.out.println("select value, valid from conf_fr where id_task = " + id_task);
         return rs;
     }
     

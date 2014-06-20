@@ -3,6 +3,8 @@ package com.example.plateformevaadin6;
 import generalchair.Generalchair;
 import inscription.PersonInfoInscri;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 
 import vicepresident.Vicepresident;
@@ -122,8 +124,7 @@ public class Plateformevaadin6Application extends Application {
 
 		public void validate() {
 			String name = (String) login.getValue();
-			//String password = encode((String) pwd.getValue());
-			String password = (String) pwd.getValue();
+			String password = encode((String) pwd.getValue());
 			MysqlConnection con;
 
 			try {
@@ -135,11 +136,10 @@ public class Plateformevaadin6Application extends Application {
     			rs.next();
     			int id_user = rs.getInt("id_user");
     			String role = rs.getString("role");
-    			System.out.println(id_user + role);
     			if(role.equals("GC")){
     			getMainWindow().setContent(new Generalchair(id_user));
     			}else if(role.equals("VP")){
-    			//getMainWindow().setContent(new Vicepresident(id_user));	
+    			getMainWindow().setContent(new Vicepresident(id_user));	
     			}
 			} catch (Exception e) {
 				//e.printStackTrace();
@@ -147,7 +147,7 @@ public class Plateformevaadin6Application extends Application {
 			}
 		}
 
-	/*public String encode(String password) {
+	public String encode(String password) {
 		byte[] hash = null;
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
@@ -166,5 +166,5 @@ public class Plateformevaadin6Application extends Application {
 			}
 		}
 		return sb.toString();
-	}*/
+	}
 }

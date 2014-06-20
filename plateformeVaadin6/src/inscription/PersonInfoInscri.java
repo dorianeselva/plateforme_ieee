@@ -1,5 +1,7 @@
 package inscription;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 
 import com.example.plateformevaadin6.MysqlConnection;
@@ -103,7 +105,7 @@ public class PersonInfoInscri extends CustomComponent {
 				+ username.getValue() + "','" +lastname.getValue() +"','" 
 				+ firstname.getValue() + "','"+ sex.getValue() +"','" 
 				+ nationality.getValue() +"','" + tel.getValue()+"','" 
-				+ email.getValue() +"','" + pwd.getValue() + "')");
+				+ email.getValue() +"','" + encode((String) pwd.getValue()) + "')");
 			vl.removeAllComponents();
 			vl.addComponent(new Label("Please wait for the response of the adminitrator"));
 			
@@ -118,5 +120,26 @@ public class PersonInfoInscri extends CustomComponent {
 			ResultSet rs = con.queryTable("select country_name from countries");
  
 			return rs;
+	}
+	
+	public String encode(String password) {
+		byte[] hash = null;
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			hash = md.digest(password.getBytes());
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < hash.length; ++i) {
+			String hex = Integer.toHexString(hash[i]);
+			if (hex.length() == 1) {
+				sb.append(0);
+				sb.append(hex.charAt(hex.length() - 1));
+			} else {
+				sb.append(hex.substring(hex.length() - 2));
+			}
+		}
+		return sb.toString();
 	}
 }
